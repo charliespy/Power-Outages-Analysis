@@ -17,8 +17,8 @@ TODO: Explain how we cleaned and selected the columns in words
 
 Here's the cleaned dataframe: 
 
-| U.S._STATE   | OUTAGE.START        | OUTAGE.RESTORATION   |   OUTAGE.DURATION |   ANOMALY.LEVEL | CLIMATE.CATEGORY   | CAUSE.CATEGORY     |
-|:-------------|:--------------------|:---------------------|------------------:|----------------:|:-------------------|:-------------------|
+| U.S._STATE   | OUTAGE. START        | OUTAGE. RESTORATION   |   OUTAGE. DURATION |   ANOMALY. LEVEL | CLIMATE. CATEGORY   | CAUSE. CATEGORY     |
+|:-------------|:---------------------|:----------------------|-------------------:|----------------:|:--------------------|:--------------------|
 | Minnesota    | 2011-07-01 17:00:00 | 2011-07-03 20:00:00  |              3060 |            -0.3 | normal             | severe weather     |
 | Minnesota    | 2014-05-11 18:38:00 | 2014-05-11 18:39:00  |                 1 |            -0.1 | normal             | intentional attack |
 | Minnesota    | 2010-10-26 20:00:00 | 2010-10-28 22:00:00  |              3000 |            -1.5 | cold               | severe weather     |
@@ -55,6 +55,7 @@ We created a pivot table:
 |             505     |                22799.7  |              312.557 |     209.833 |         596.231 |          4416.69 |                         478.2   |
 
 
+<p style="text-align:center"><iframe src="assets/aggregates.html" width=600 height=480 frameBorder=0></iframe></p>
 
 
 
