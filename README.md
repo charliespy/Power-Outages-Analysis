@@ -29,12 +29,41 @@ Here's the cleaned dataframe:
 
 ### Univariate Analysis
 
+First, we could take a look at the severeness indicator variables. We start by plotting a histogram of the `OUTAGE.DURATION` column.
+
 <p style="text-align:center"><iframe src="assets/outage_duration.html" width=800 height=600 frameBorder=0></iframe></p>
 
+BULLSHIT SOME INTERPRETATION
+
+Next, we could plot a histogram of the `ANOMALY.LEVEL` column.
 
 <p style="text-align:center"><iframe src="assets/anomaly_level.html" width=800 height=600 frameBorder=0></iframe></p>
 
+INTERPRETATION
+
+Then, we could take a look at the causal indicator variables. This is the value counts of the `CLIMATE.CATEGORY` column. 
+
+| Causes   |   CLIMATE.CATEGORY |
+|:---------|-------------------:|
+| normal   |                675 |
+| cold     |                430 |
+| warm     |                276 |
+
+This is the value counts of the `CAUSE.CATEGORY` column. 
+
+| Causes                        |   CAUSE.CATEGORY |
+|:------------------------------|-----------------:|
+| severe weather                |              643 |
+| intentional attack            |              415 |
+| system operability disruption |              126 |
+| public appeal                 |               67 |
+| equipment failure             |               59 |
+
+
+To see the distribution of location, we could create a heatmap using folium.
+
 <p style="text-align:center"><iframe src="assets/heatmap.html" width=800 height=600 frameBorder=0></iframe></p>
+
 
 
 ### Bivariate Analysis
@@ -97,10 +126,4 @@ The P-value for the testing is roughly 0.65, which means that at significant lev
 In real-life terms, this result suggests that the reason for the outage ('severe weather' or 'equipment failure') may not be a strong predictor of the severity of the outage. Other factors or a combination of factors might contribute to the observed severity levels.
 
 The comparable damage levels caused by 'equipment failure' and 'severe weather' may be due to resilient infrastructure, proactive maintenance, and swift response protocols in the power system. Investments in technology, regional climate considerations, and adherence to regulatory standards further contribute to minimizing outage severity. Data aggregation into broad categories may conceal nuanced variations, emphasizing the importance of a detailed analysis for a comprehensive understanding of the observed similarities.
-
-
-
-
-
-
 
