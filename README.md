@@ -11,7 +11,7 @@ Electricity forms the backbone of modern civilization, an invisible force that p
 
 Our dataset, spanning from January 2000 to July 2016, catalogs major power outages across the United States that affected over 50,000 customers or precipitating losses exceeding 300 MW. 
 
-Through the study, we hope to answer, "How do power outages that stem from different affect people's lives last differently?" In order to answer this question, we will investigate the correlation between different causes of power outages and see if their distributions are different. 
+Through the study, we hope to answer, "How do power outages that stem from different causes affect people's lives differently?" In order to answer this question, we will investigate the correlation between different causes of power outages and see if their distributions are different. 
 
 Here is an explanation of what each column in the selected dataset `power_select` means:
 
@@ -60,7 +60,7 @@ BULLSHIT SOME INTERPRETATION
 
 Next, we could plot a histogram of the `ANOMALY.LEVEL` column.
 
-<p style="text-align:center"><iframe src="assets/anomaly_level.html" width=800 height=600 frameBorder=0></iframe></p>
+<p style="text-align:center"><iframe src="assets/demand_loss.html" width=800 height=600 frameBorder=0></iframe></p>
 
 INTERPRETATION
 
@@ -68,19 +68,19 @@ Then, we could take a look at the causal indicator variables. This is the value 
 
 | Causes   |   CLIMATE.CATEGORY |
 |:---------|-------------------:|
-| normal   |                675 |
-| cold     |                430 |
-| warm     |                276 |
+| normal   |                620 |
+| cold     |                387 |
+| warm     |                248 |
 
 This is the value counts of the `CAUSE.CATEGORY` column. 
 
 | Causes                        |   CAUSE.CATEGORY |
 |:------------------------------|-----------------:|
-| severe weather                |              643 |
+| severe weather                |              543 |
 | intentional attack            |              415 |
-| system operability disruption |              126 |
-| public appeal                 |               67 |
-| equipment failure             |               59 |
+| system operability disruption |              112 |
+| public appeal                 |               64 |
+| equipment failure             |               54 |
 
 INTERPRETATION
 
@@ -101,31 +101,19 @@ The box plot depicts three climate categories: warm, cold, and normal, the condi
 
 The three distributions have similar IQR and shape. However, the median and 75% quartile outage duration is the highest in cold climate. The warm category has the fewest outliers, and the normal category has the most outliers. Overall, the cold climate tends to have longer and more variable outage durations. In contrast, the warm climate tends to have shorter and more consistent durations. This confirms our prediction that power outages are more likely to be severe and impactful in cold climates, where it snows more often than in the warm climates, where there's sunshine most of the time. 
 
-From this box plot, one could hypothesize that climate conditions have an impact on both the duration and variability of power outages. It would be important to investigate whether the longer durations in warmer climates are due to the types of weather events that cause outages, the response capabilities, or other factors. Similarly, the reasons for shorter and more consistent outages in normal climates would be worth exploring.
+From this box plot, one could hypothesize that although climate conditions do not have a strong impact on both the duration and variability of power outages. Therefore, in our hypothesis tests, we will likely not adopt `CLIMATE.CATEGORY` as a feature variable. 
 
 Next, we will use another box plot to analyze the influence of different `CAUSE.CATEGORY`s on the `ANOMALY.LEVEL` of the outage.
 
 <p style="text-align:center"><iframe src="assets/biv_2.html" width=800 height=600 frameBorder=0></iframe></p>
 
-The box plot shows us that the anomaly levels are numeric, continuous, and possibly standardized around zero, which may indicate a deviation from a norm or average situation. Several categories of outage causes are included, such as islanding, fuel supply emergency, public appeal, equipment failure, system operability disruption, intentional attack, and severe weather.
+The box plot shows us that the demand loss values are numeric, continuous, and possibly standardized around zero, which may indicate a deviation from a norm or average situation. Several categories of outage causes are included, such as islanding, fuel supply emergency, public appeal, equipment failure, system operability disruption, intentional attack, and severe weather.
 
-Analyzing the plot:
+In the plot, every cause category's distribution looks vastly different. The most notable/unique categories are: 
+- severe weather: this distribution has a very large IQR and outliers. Its range is the largest of all distributions, and it is also the most balanced distributions. 
+- intentional attack: This distribution has an extremely slim IQR, not even visible on the plot. Since its median and quartile ranges lie around `DEMAND.LOSS.MW` = 0, but its outliers span all the way to the largest values, it means that although the majority of the power outages caused by intentaionl attacks do not cost a lot of power, some well-planned attacks can be very costly. 
 
-- Islanding: This category has a wide IQR, indicating variability in anomaly levels. 
-
-- Fuel Supply Emergency: Although this category has a narrow IQR, it has many outliers, suggesting strong variability in the dataset. 
-
-- Public Appeal: This category shows a median anomaly level below 0, with a wide IQR. There are outliers, indicating that some equipment failures result in significantly higher anomaly levels.
-
-- Equipment Failure: The IQR is narrow, with only one outlier, which suggests that events in this category are consistent in their anomaly level.
-
-- System Operability Disruption: There's a wide IQR and the median anomaly level is negative but close to zero. The spread and outliers indicate variable impacts on the anomaly level due to system operability disruptions.
-
-- Intentional Attack: This category has a narrow IQR, but the most number of outliers, which indicates that while most intentional attacks do not deviate far from the median anomaly level, a few have had significantly higher impacts.
-
-- Severe Weather: This category has a very wide IQR, showing that severe weather causes a large variation in anomaly levels. The outliers also indicate that some severe weather events lead to very high anomaly levels.
-
-In summary, the box plot suggests that different causes of power outages result in varying levels of anomalies. Severe weather seems to be the most variable and potentially the most impactful on the anomaly level, while equipment failure appear to have the least variability. This analysis helps us in understanding which types of events create more significant deviations from normal operating conditions. In the hypothesis testing section, we will be analyzing the relationship between severe weather outages and equipment failure outages, using their anomaly levels as the standard. 
+In summary, the box plot suggests that different causes of power outages result in varying levels of power loss. Severe weather seems to be have the most stable amount of demands loss, while intentional attacks appear to have the most variable distribution. This analysis helps us in understanding which types of events create more significant deviations from normal operating conditions. In the hypothesis testing section, we will be analyzing the relationship between severe weather outages and intentional attack outages, using their demand loss as the standard. 
 
 ### Interesting Aggregates 
 
@@ -133,9 +121,9 @@ We first created a pivot table
 
 |   equipment failure |   fuel supply emergency |   intentional attack |   islanding |   public appeal |   severe weather |   system operability disruption |
 |--------------------:|------------------------:|---------------------:|------------:|----------------:|-----------------:|--------------------------------:|
-|             308.235 |                17433    |              497.282 |     259.267 |        2125.91  |          3279.95 |                         601.861 |
-|            3201.43  |                 7658.82 |              426.818 |     142.176 |        1376.53  |          4059.33 |                         941.018 |
-|             505     |                22799.7  |              312.557 |     209.833 |         596.231 |          4416.69 |                         478.2   |
+|              338.5  |                 1521.57 |              328.557 |    259.267  |        1124.37  |          1808.41 |                         590.125 |
+|              445.76 |                 1583.2  |              333.366 |     72.6875 |        1385.58  |          1820.49 |                         276.583 |
+|              505    |                  255    |              312.557 |    209.833  |         625.333 |          1777.95 |                         495.571 |
 
 INTERPRETATION
 
@@ -175,7 +163,7 @@ We ran permutation for 10000 times and the graph shows the distribution of permu
 P-value: 0.6543
 Observed KS Statistic: 0.08171442127738092
 ```
-<p style="text-align:center"><iframe src="assets/p_val.html" width=800 height=600 frameBorder=0></iframe></p>
+<p style="text-align:center"><iframe src="assets/hypothesis_1.html" width=800 height=600 frameBorder=0></iframe></p>
 
 The P-value for the testing is roughly 0.65, which means that at significant level of 0.05, we fail to reject the null hypothesis. 
 
@@ -183,3 +171,30 @@ In real-life terms, this result suggests that the reason for the outage ('severe
 
 The comparable damage levels caused by 'equipment failure' and 'severe weather' may be due to resilient infrastructure, proactive maintenance, and swift response protocols in the power system. Investments in technology, regional climate considerations, and adherence to regulatory standards further contribute to minimizing outage severity. Data aggregation into broad categories may conceal nuanced variations, emphasizing the importance of a detailed analysis for a comprehensive understanding of the observed similarities.
 
+
+
+
+
+
+
+Null Hypothesis (H0): The cumulative distribution functions (CDFs) of 'ANOMALY.LEVEL' for the 'severe weather' and 'equipment failure' cause categories are identical.
+
+Alternative Hypothesis (H1): The cumulative distribution functions (CDFs) of 'ANOMALY.LEVEL' for the 'severe weather' and 'equipment failure' cause categories are not identical.
+
+We would select only the useful column, including 'ANOMALY.LEVEL' and 'CAUSE.CATEGORY'. Recognizing the abundance of difference values in 'CAUSE.CATEGORY', we decide to only perform text on 'severe weather' and 'equipment failure'.
+
+Since anomaly level is numerical data, and there exits outier in anomaly level for severe weather and equiment failure, we choose to use  Kolmogorov-Smirnov (KS) statistic as our test statistics, considering its advantage on sensitivity to difference and robustness on ouliers.
+
+We ran permutation for 10000 times and the graph shows the distribution of permuation test result. The red line marks the observed value.
+
+```python
+P-value: 0.6543
+Observed KS Statistic: 0.08171442127738092
+```
+<p style="text-align:center"><iframe src="assets/hypothesis_2.html" width=800 height=600 frameBorder=0></iframe></p>
+
+The P-value for the testing is roughly 0.65, which means that at significant level of 0.05, we fail to reject the null hypothesis. 
+
+In real-life terms, this result suggests that the reason for the outage ('severe weather' or 'equipment failure') may not be a strong predictor of the severity of the outage. Other factors or a combination of factors might contribute to the observed severity levels.
+
+The comparable damage levels caused by 'equipment failure' and 'severe weather' may be due to resilient infrastructure, proactive maintenance, and swift response protocols in the power system. Investments in technology, regional climate considerations, and adherence to regulatory standards further contribute to minimizing outage severity. Data aggregation into broad categories may conceal nuanced variations, emphasizing the importance of a detailed analysis for a comprehensive understanding of the observed similarities.
