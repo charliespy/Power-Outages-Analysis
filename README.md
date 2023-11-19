@@ -16,6 +16,7 @@ TODO: columns analysis
 TODO: Explain how we cleaned and selected the columns in words
 
 Here's the cleaned dataframe: 
+
 <!--- Dataframe -->
 | U.S._STATE   | OUTAGE.START        | OUTAGE.RESTORATION   |   OUTAGE.DURATION |   ANOMALY.LEVEL | CLIMATE.CATEGORY   | CAUSE.CATEGORY     |
 |:-------------|:--------------------|:---------------------|------------------:|----------------:|:-------------------|:-------------------|
@@ -29,7 +30,13 @@ Here's the cleaned dataframe:
 
 ### Univariate Analysis
 
-<iframe src="assets/outage_duration.html" width=500 height=300 frameBorder=0></iframe>
+<p style="text-align:center"><iframe src="assets/outage_duration.html" width=500 height=400 frameBorder=0></iframe></p>
+
+
+<iframe src="assets/anomaly_level.html" width=500 height=400 frameBorder=0></iframe>
+
+
+
 
 ### Bivariate Analysis
 
