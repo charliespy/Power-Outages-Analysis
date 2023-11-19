@@ -140,7 +140,7 @@ We think that the dataset is NMAR. In the analysis of the dataset derived from '
 
 ### Missingness Dependency
 
-Now, we focus on the missingness of demand loss in the power dataframe and test the dependency of this missingnes We are conducting dependency test on two paris of columns: {`CAUSE.CATEGORY`, `DEMAND.LOSS.MW`}, and {`CLIMATE.CATEGORY`, `DEMAND.LOSS.MW`}.
+Now, we focus on the missingness of demand loss in the power dataframe and test the dependency of this missingnes We are conducting **permutation dependency test** on two paris of columns: {`CAUSE.CATEGORY`, `DEMAND.LOSS.MW`}, and {`CLIMATE.CATEGORY`, `DEMAND.LOSS.MW`}.
 
 1. **`CAUSE.CATEGORY` & `DEMAND.LOSS.MW`:**
 
@@ -154,7 +154,7 @@ Test statistic: We are using TVD (Total Variation Distance) as our test statisti
 
 We get a p-value of 0.0, when we use 0.05 as our significance threshold, we should reject the null hypothesis that the distribution of the cause when demand loss is missing is the same as the distribution of the cause when demand loss is not missing. In another word, demand loss is not dependent on the cause.
 
-1. **`CLIMATE.CATEGORY` & `DEMAND.LOSS.MW`:**
+2. **`CLIMATE.CATEGORY` & `DEMAND.LOSS.MW`:**
 
 Null Hypothesis (H0): the distribution of the climate when demand loss is missing is the same as the distribution of the climate when demand loss is not missing 
 
