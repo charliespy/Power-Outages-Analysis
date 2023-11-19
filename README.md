@@ -143,8 +143,33 @@ We think that the dataset is NMAR. In the analysis of the dataset derived from '
 
 ### Missingness Dependency
 
+Now, we focus on the missingness of demand loss in the power dataframe and test the dependency of this missingnes We are conducting dependency test on two paris of columns: {`CAUSE.CATEGORY`, `DEMAND.LOSS.MW`}, and {`CLIMATE.CATEGORY`, `DEMAND.LOSS.MW`}.
 
+**`CAUSE.CATEGORY` & `DEMAND.LOSS.MW`:**
 
+Null Hypothesis (H0): the distribution of the cause when demand loss is missing is the same as the distribution of the cause when demand loss is not missing. 
+
+Alternative Hypothesis (H1): the distribution of the cause when demand loss is missing is different from the distribution of the cause when demand loss is not missing. 
+
+Test statistic: We are using TVD (Total Variation Distance) as our test statistics because CAUSE.CATEGORY contains categorical variables. We use permutation test to shuffle the missingness of demand loss 500 times and get 500 simulating results about the TVD.
+
+<p style="text-align:center"><iframe src="assets/missingness_1.html" width=800 height=600 frameBorder=0></iframe></p>
+
+We get a p-value of approximately 0.0, when we use 0.05 as our significance threshold, we should reject the null hypothesis that the distribution of the cause when demand loss is missing is the same as the distribution of the cause when demand loss is not missing. In another word, demand loss is not dependent on the cause.
+
+**`CLIMATE.CATEGORY` & `DEMAND.LOSS.MW`:**
+
+Null Hypothesis (H0): the distribution of the climate when demand loss is missing is the same as the distribution of the climate when demand loss is not missing 
+
+Alternative Hypothesis (H1): the distribution of the climate when demand loss is missing is different from the distribution of the climate when demand loss is not missing 
+
+Test statistic: we are using TVD (Total Variation Distance) as our test statistics because CLIMATE.CATEGORY contains categorical variables. 
+
+We use permutation test to shuffle the missingness of demand loss 500 times and get 500 simulating results about the TVD.
+
+<p style="text-align:center"><iframe src="assets/missingness_2.html" width=800 height=600 frameBorder=0></iframe></p>
+
+We get a p-value of approximately 0.3, and when we use 0.05 as our significance threshold, we fail to reject the null hypothesis that the distribution of the climate when demand loss is missing is the same as the distribution of the climate when demand loss is not missing. In another word, demand loss is dependent on climate category.
 
 
 ## Hypothesis Testing 
