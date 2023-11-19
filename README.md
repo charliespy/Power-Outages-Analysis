@@ -17,7 +17,6 @@ TODO: Explain how we cleaned and selected the columns in words
 
 Here's the cleaned dataframe: 
 
-<!--- Dataframe -->
 | U.S._STATE   | OUTAGE.START        | OUTAGE.RESTORATION   |   OUTAGE.DURATION |   ANOMALY.LEVEL | CLIMATE.CATEGORY   | CAUSE.CATEGORY     |
 |:-------------|:--------------------|:---------------------|------------------:|----------------:|:-------------------|:-------------------|
 | Minnesota    | 2011-07-01 17:00:00 | 2011-07-03 20:00:00  |              3060 |            -0.3 | normal             | severe weather     |
@@ -43,6 +42,7 @@ Here's the cleaned dataframe:
 <p style="text-align:center"><iframe src="assets/biv_1.html" width=600 height=480 frameBorder=0></iframe></p>
 
 <p style="text-align:center"><iframe src="assets/biv_2.html" width=600 height=480 frameBorder=0></iframe></p>
+
 
 ### Interesting Aggregates 
 
