@@ -39,7 +39,7 @@ Here's the cleaned dataframe:
 
 ### Bivariate Analysis
 
-<p style="text-align:center"><iframe src="assets/biv_1.html" width=800 height=6000 frameBorder=0></iframe></p>
+<p style="text-align:center"><iframe src="assets/biv_1.html" width=800 height=600 frameBorder=0></iframe></p>
 
 <p style="text-align:center"><iframe src="assets/biv_2.html" width=800 height=600 frameBorder=0></iframe></p>
 
@@ -55,7 +55,7 @@ We created a pivot table:
 |             505     |                22799.7  |              312.557 |     209.833 |         596.231 |          4416.69 |                         478.2   |
 
 
-<p style="text-align:center"><iframe src="assets/aggregates.html" width=600 height=480 frameBorder=0></iframe></p>
+<p style="text-align:center"><iframe src="assets/aggregates.html" width=800 height=600 frameBorder=0></iframe></p>
 
 
 
@@ -69,6 +69,4 @@ We created a pivot table:
 
 ## Hypothesis Testing 
 
-<img src="assets/p_val.png"
-     alt="Permutation Test for KS Statistic"
-     style="text-align:center" />
+![image](assets/p_val.png)
