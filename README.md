@@ -86,7 +86,7 @@ INTERPRETATION
 
 To see the distribution of location, we could create a heatmap using folium.
 
-<p style="text-align:center"><iframe src="assets/heatmap.html" width=800 height=800 frameBorder=0></iframe></p>
+<p style="text-align:center"><iframe src="assets/heatmap.html" frameBorder=0></iframe></p>
 
 INTERPRETATION 
 
@@ -149,13 +149,13 @@ We think that the dataset is NMAR. In the analysis of the dataset derived from '
 
 ## Hypothesis Testing 
 
-Null Hypothesis (H0): The cumulative distribution functions (CDFs) of 'ANOMALY.LEVEL' for the 'severe weather' and 'equipment failure' cause categories are identical.
+Null Hypothesis (H0): The cumulative distribution functions (CDFs) of `DEMAND.LOSS.MW` for the 'severe weather' and 'intentional attack' cause categories are identical.
 
-Alternative Hypothesis (H1): The cumulative distribution functions (CDFs) of 'ANOMALY.LEVEL' for the 'severe weather' and 'equipment failure' cause categories are not identical.
+Alternative Hypothesis (H1): The cumulative distribution functions (CDFs) of `DEMAND.LOSS.MW` for the 'severe weather' and 'intentional attack' cause categories are not identical.
 
-We would select only the useful column, including 'ANOMALY.LEVEL' and 'CAUSE.CATEGORY'. Recognizing the abundance of difference values in 'CAUSE.CATEGORY', we decide to only perform text on 'severe weather' and 'equipment failure'.
+We would select only the useful column, including `DEMAND.LOSS.MW` and `CAUSE.CATEGORY`. Recognizing the abundance of difference values in 'CAUSE.CATEGORY', we decide to only perform text on 'severe weather' and 'intentional attack'.
 
-Since anomaly level is numerical data, and there exits outier in anomaly level for severe weather and equiment failure, we choose to use  Kolmogorov-Smirnov (KS) statistic as our test statistics, considering its advantage on sensitivity to difference and robustness on ouliers.
+Since anomaly level is numerical data, and there exits outier in anomaly level for severe weather and intentional attack, we choose to use  Kolmogorov-Smirnov (KS) statistic as our test statistics, considering its advantage on sensitivity to difference and robustness on ouliers.
 
 We ran permutation for 10000 times and the graph shows the distribution of permuation test result. The red line marks the observed value.
 
