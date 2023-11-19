@@ -46,7 +46,13 @@ Here's the cleaned dataframe:
 
 ### Interesting Aggregates 
 
+We created a pivot table: 
 
+|   equipment failure |   fuel supply emergency |   intentional attack |   islanding |   public appeal |   severe weather |   system operability disruption |
+|--------------------:|------------------------:|---------------------:|------------:|----------------:|-----------------:|--------------------------------:|
+|             308.235 |                17433    |              497.282 |     259.267 |        2125.91  |          3279.95 |                         601.861 |
+|            3201.43  |                 7658.82 |              426.818 |     142.176 |        1376.53  |          4059.33 |                         941.018 |
+|             505     |                22799.7  |              312.557 |     209.833 |         596.231 |          4416.69 |                         478.2   |
 
 
 
