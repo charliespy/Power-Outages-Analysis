@@ -23,7 +23,7 @@ Here is an explanation of what each column in the selected dataset `power_select
 
 - The `OUTAGE.DURATION` column means duration of outage events (in minutes).
 
-- The `ANOMALY.LEVEL` column represents the oceanic El Niño/La Niña (ONI) index referring to the cold and warm episodes by season. It is estimated as a 3-month running mean of ERSST.v4 SST anomalies in the Niño 3.4 region (5°N to 5°S, 120–170°W). 
+- The `DEMAND.LOSS.MW` column represents the mount of peak demand lost during an outage event in Megawatts. 
 
 - The `CLIMATE.CATEGORY` column represents the climate episodes corresponding to the years. The categories—“Warm”, “Cold” or “Normal” episodes of the climate are based on a threshold of ± 0.5 °C for the Oceanic Niño Index (ONI).
 
@@ -33,12 +33,12 @@ Here is an explanation of what each column in the selected dataset `power_select
 ### Data Cleaning
 
 There are 55 columns in the original dataset. In order to increase the readability and accuracy of our data, we followed the following steps to clean our DataFrame:
-1. Combine the column `OUTAGE.START.DATE` and `OUTAGE.START.TIME` into just one `pd.Timestamp` column called `OUTAGE.START`. 
-2. Uing the same technique, we also cleaned `OUTAGE.RESTORATION.DATE` and `OUTAGE.RESTORATION.TIME` into `OUTAGE.RESTORATION`. 
-3. We selected a few of the columns based on interest. Since we want to study the relationship between climate, cause of the outage, and how severe the outage is, we selected these columns. 
+1. Cleaning `OUTAGE.START` column: Combine the column `OUTAGE.START.DATE` and `OUTAGE.START.TIME` into just one `pd.Timestamp` column called `OUTAGE.START`. 
+2. Cleaning `OUTAGE.RESTORATION` column: Uing the same technique, we also cleaned `OUTAGE.RESTORATION.DATE` and `OUTAGE.RESTORATION.TIME` into `OUTAGE.RESTORATION`. 
+3. Column selection: We selected a few of the columns based on interest. Since we want to study the relationship between climate, cause of the outage, and how severe the outage is, we selected seven columns. 
+4. Cleaning outliers: After graphing the distribution of `OUTAGE.DURATION` and `DEMAND.LOSS.MW` in histograms, we found that each of these distributions were very skewed. To eliminate outliers that are too extreme, we used the IQR to clean the outliers from these distributions. 
 
-
-In these seven columns, we deemed columns `CLIMATE.CATEGORY` and `CAUSE.CATEGORY` as causal indicator variables, as they characterizes the cause of the outage. We also labeled columns `OUTAGE.DURATION` and `ANOMALY.LEVEL` as severness indicator variables, as they reveal how severe the power outages are. 
+Finally, in the remaining seven columns, we deemed columns `CLIMATE.CATEGORY` and `CAUSE.CATEGORY` as causal indicator variables, as they characterizes the cause of the outage. We also labeled columns `OUTAGE.DURATION` and `DEMAND.LOSS.MW` as severness indicator variables, as they reveal how severe the power outages are. 
 
 Here's the cleaned dataframe: 
 
@@ -58,7 +58,7 @@ First, we could take a look at the severeness indicator variables. We start by p
 
 BULLSHIT SOME INTERPRETATION
 
-Next, we could plot a histogram of the `ANOMALY.LEVEL` column.
+Next, we could plot a histogram of the `DEMAND.LOSS.MW` column.
 
 <p style="text-align:center"><iframe src="assets/demand_loss.html" width=800 height=600 frameBorder=0></iframe></p>
 
@@ -101,7 +101,7 @@ The box plot depicts three climate categories: warm, cold, and normal, the condi
 
 The three distributions have similar IQR and shape. However, the median and 75% quartile outage duration is the highest in cold climate. The warm category has the fewest outliers, and the normal category has the most outliers. Overall, the cold climate tends to have longer and more variable outage durations. In contrast, the warm climate tends to have shorter and more consistent durations. This confirms our prediction that power outages are more likely to be severe and impactful in cold climates, where it snows more often than in the warm climates, where there's sunshine most of the time. 
 
-From this box plot, one could hypothesize that although climate conditions do not have a strong impact on both the duration and variability of power outages. Therefore, in our hypothesis tests, we will likely not adopt `CLIMATE.CATEGORY` as a feature variable. 
+From this box plot, one could hypothesize that climate conditions do not have a strong impact on both the duration and variability of power outages. Therefore, in our hypothesis tests, we will likely not adopt `CLIMATE.CATEGORY` as a feature variable. 
 
 Next, we will use another box plot to analyze the influence of different `CAUSE.CATEGORY`s on the `ANOMALY.LEVEL` of the outage.
 
