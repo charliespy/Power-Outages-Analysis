@@ -30,16 +30,19 @@ Here's the cleaned dataframe:
 
 ### Univariate Analysis
 
-<p style="text-align:center"><iframe src="assets/outage_duration.html" width=500 height=400 frameBorder=0></iframe></p>
+<p style="text-align:center"><iframe src="assets/outage_duration.html" width=600 height=480 frameBorder=0></iframe></p>
 
 
-<iframe src="assets/anomaly_level.html" width=500 height=400 frameBorder=0></iframe>
+<p style="text-align:center"><iframe src="assets/anomaly_level.html" width=600 height=480 frameBorder=0></iframe></p>
 
-
+<p style="text-align:center"><iframe src="assets/heatmap.html" width=600 height=480 frameBorder=0></iframe></p>
 
 
 ### Bivariate Analysis
 
+<p style="text-align:center"><iframe src="assets/biv_1.html" width=600 height=480 frameBorder=0></iframe></p>
+
+<p style="text-align:center"><iframe src="assets/biv_2.html" width=600 height=480 frameBorder=0></iframe></p>
 
 ### Interesting Aggregates 
 
