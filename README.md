@@ -29,7 +29,7 @@ Here's the cleaned dataframe:
 
 ### Univariate Analysis
 
-<p style="text-align:center"><iframe src="assets/outage_duration.html" width=600 height=480 frameBorder=0></iframe></p>
+<p style="text-align:center"><iframe src="assets/outage_duration.html" width=800 height=600 frameBorder=0></iframe></p>
 
 
 <p style="text-align:center"><iframe src="assets/anomaly_level.html" width=800 height=600 frameBorder=0></iframe></p>
@@ -79,12 +79,12 @@ Since anomaly level is numerical data, and there exits outier in anomaly level f
 
 We ran permutation for 10000 times and the graph shows the distribution of permuation test result. The red line marks the observed value.
 
-![image](assets/p_val.png)
-
 ```python
 P-value: 0.6543
 Observed KS Statistic: 0.08171442127738092
 ```
+
+<p style="text-align:center"><iframe src="assets/p_val.html" width=800 height=600 frameBorder=0></iframe></p>
 
 The P-value for the testing is roughly 0.65, which means that at significant level of 0.05, we fail to reject the null hypothesis. 
 
