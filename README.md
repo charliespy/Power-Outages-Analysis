@@ -7,12 +7,12 @@ TODO: bullshit about 3-4 sentences. Abstract sort of thing.
 ## Investigating Topic and Introduction
 TODO: Background Analysis
 
-### Introduction of the Dataset
+**Introduction of the Dataset**
 TODO: columns analysis
 
 
 ## Cleaning and EDA
-### Data Cleaning
+**Data Cleaning**
 TODO: Explain how we cleaned and selected the columns in words
 
 Here's the cleaned dataframe: 
@@ -27,7 +27,7 @@ Here's the cleaned dataframe:
 
 
 
-### Univariate Analysis
+**Univariate Analysis**
 
 <p style="text-align:center"><iframe src="assets/outage_duration.html" width=600 height=480 frameBorder=0></iframe></p>
 
@@ -37,14 +37,14 @@ Here's the cleaned dataframe:
 <p style="text-align:center"><iframe src="assets/heatmap.html" width=600 height=480 frameBorder=0></iframe></p>
 
 
-### Bivariate Analysis
+**Bivariate Analysis**
 
 <p style="text-align:center"><iframe src="assets/biv_1.html" width=600 height=480 frameBorder=0></iframe></p>
 
 <p style="text-align:center"><iframe src="assets/biv_2.html" width=600 height=480 frameBorder=0></iframe></p>
 
 
-### Interesting Aggregates 
+**Interesting Aggregates**
 
 We created a pivot table: 
 
@@ -69,6 +69,6 @@ We created a pivot table:
 
 ## Hypothesis Testing 
 
-<img src="assets/p_val.png.png"
+<img src="assets/p_val.png"
      alt="Permutation Test for KS Statistic"
      style="text-align:center" />
