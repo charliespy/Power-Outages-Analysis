@@ -1,14 +1,33 @@
-# Blackout Blueprint: Unraveling the Mysteries behind Major Power Outages in the US
+# Unraveling the Mysteries Behind Major Power Outages in the U.S.
 **Authors:** Charlie Sun, Aaron Feng
 
 ## Project Overview
+
 TODO: bullshit about 3-4 sentences. Abstract sort of thing. 
 
 ## Investigating Topic and Introduction
-TODO: bullshit about background Analysis
+
+ODO: bullshit about background Analysis
 
 ### Introduction of the Dataset
-TODO: bullshit about columns analysis
+
+Here is an explanation of what each column in the selected dataset `power_select` means:
+
+- The `U.S._STATE` column represents all the states in the continental U.S.
+
+- The `OUTAGE.START` column indicates the time in pandas datetime format when the outage event started (as reported by the corresponding Utility in the region). 
+
+- The `OUTAGE.RESTORATION` column indicates the time in pandas datetime format when power was restored to all the customers (as reported by the corresponding Utility in the region).
+
+- The `OUTAGE.DURATION` column means duration of outage events (in minutes).
+
+- The `ANOMALY.LEVEL` column represents the oceanic El Niño/La Niña (ONI) index referring to the cold and warm episodes by season. It is estimated as a 3-month running mean of ERSST.v4 SST anomalies in the Niño 3.4 region (5°N to 5°S, 120–170°W). 
+
+- The `CLIMATE.CATEGORY` column represents the climate episodes corresponding to the years. The categories—“Warm”, “Cold” or “Normal” episodes of the climate are based on a threshold of ± 0.5 °C for the Oceanic Niño Index (ONI).
+
+- The `CAUSE.CATEGORY` column includes the categories of all the events causing the major power outages.
+
+In these seven columns, we deem columns `CLIMATE.CATEGORY` and `CAUSE.CATEGORY` as causal indicator variables, as they characterizes the cause of the outage. We also label columns `OUTAGE.DURATION` and `ANOMALY.LEVEL` as severness indicator variables, as they reveal how severe the power outages are. 
 
 
 ## Cleaning and EDA
@@ -104,7 +123,6 @@ Analyzing the plot:
 
 In summary, the box plot suggests that different causes of power outages result in varying levels of anomalies. Severe weather seems to be the most variable and potentially the most impactful on the anomaly level, while equipment failure appear to have the least variability. This analysis helps us in understanding which types of events create more significant deviations from normal operating conditions. In the hypothesis testing section, we will be analyzing the relationship between severe weather outages and equipment failure outages, using their anomaly levels as the standard. 
 
-
 ### Interesting Aggregates 
 
 We first created a pivot table
@@ -153,7 +171,6 @@ We ran permutation for 10000 times and the graph shows the distribution of permu
 P-value: 0.6543
 Observed KS Statistic: 0.08171442127738092
 ```
-
 <p style="text-align:center"><iframe src="assets/p_val.html" width=800 height=600 frameBorder=0></iframe></p>
 
 The P-value for the testing is roughly 0.65, which means that at significant level of 0.05, we fail to reject the null hypothesis. 
