@@ -57,15 +57,15 @@ First, we could take a look at the severeness indicator variables. We start by p
 
 <p style="text-align:center"><iframe src="assets/outage_duration.html" width=800 height=600 frameBorder=0></iframe></p>
 
-BULLSHIT SOME INTERPRETATION
+The plot demonstrates that `OUTAGE.DURATION` is skewed the right. The leftmost outage categoriazation, short duration outage (<1000), is the most common. The rest of the outage duration distribution are quite average.
 
 Next, we could plot a histogram of the `DEMAND.LOSS.MW` column.
 
 <p style="text-align:center"><iframe src="assets/demand_loss.html" width=800 height=600 frameBorder=0></iframe></p>
 
-INTERPRETATION
+Simillar to the outage duration distribution, the plot above is also skewed to the right. It reveals that small demand losses (< 100MW) are the most common.
 
-Then, we could take a look at the causal indicator variables. This is the value counts of the `CLIMATE.CATEGORY` column. 
+Then, we could take a look at the causal indicator variables. 
 
 | Causes   |   CLIMATE.CATEGORY |
 |:---------|-------------------:|
@@ -73,7 +73,7 @@ Then, we could take a look at the causal indicator variables. This is the value 
 | cold     |                387 |
 | warm     |                248 |
 
-This is the value counts of the `CAUSE.CATEGORY` column. 
+As we see in the dataframe above, most of the power outages happen in places where the climate is normal. 
 
 | Causes                        |   CAUSE.CATEGORY |
 |:------------------------------|-----------------:|
@@ -83,13 +83,13 @@ This is the value counts of the `CAUSE.CATEGORY` column.
 | public appeal                 |               64 |
 | equipment failure             |               54 |
 
-INTERPRETATION
+As we see the dataframe above, severe weather and itentional attack cause most of the outages. While system operability disruption, public appeal, and quipment failure causes the smallest portion of the outages.
 
 To see the distribution of location, we could create a heatmap using folium.
 
-<p style="text-align:center"><iframe src="assets/heatmap.html" width=800 height = 400 frameBorder=0></iframe></p>
+<p style="text-align:center"><iframe src="assets/heatmap.html" width=800 height=400 frameBorder=0></iframe></p>
 
-INTERPRETATION 
+As we see on the map, northeastern and midwestern states suffer most of the outages. We guess that population and GDP may have a correlation with amount of outages as California, Texas, and Washington have the greatest amount of outages. 
 
 
 ### Bivariate Analysis
