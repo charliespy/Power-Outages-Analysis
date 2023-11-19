@@ -3,17 +3,17 @@
 
 ## Project Overview
 
-TODO: bullshit about 3-4 sentences. Abstract sort of thing. 
+This project investigates the risks and causes of severe weather-induced power outages in the United States, using data from January 2000 to July 2016. It focuses on major outages affecting over 50,000 customers or causing losses above 300 MW. The study aims to understand the correlation between different causes of power outages and their impact on people's lives. The project involves comprehensive data cleaning, exploratory data analysis, assessment of missingness, and hypothesis testing to assess the dependency of outage severity on various factors like climate conditions and causes. Key findings suggest a significant impact of severe weather and intentional attacks on power outage severity.
 
 ## Investigating Topic and Introduction
 
-Electricity forms the backbone of modern civilization, an invisible force that powers our homes, fuels our industries, and charges our technologies. Yet, its uninterrupted flow is not guaranteed. Across the continental United States, major power outages have flickered and waned, leaving millions in the dark and unmasking the vulnerabilities of our energy grid. This project strives to explore the severe weather-induced power outage risks and their myriad causes.
+Electricity is the cornerstone of modern civilization, invisibly powering homes, fueling industries, and charging technologies. However, its continuous supply is not always assured. The United States has experienced significant power outages, highlighting the fragility of the national energy grid. Our project explores the risks and causes of severe weather-induced power outages, using a dataset covering incidents from January 2000 to July 2016. These events affected over 50,000 customers or resulted in losses exceeding 300 MW. We aim to discern how various outage causes distinctly impact human life by examining the correlation between different outage triggers.
 
-Our dataset, spanning from January 2000 to July 2016, catalogs major power outages across the United States that affected over 50,000 customers or precipitating losses exceeding 300 MW. 
+The dataset includes columns such as `U.S._STATE`, `OUTAGE.START`, `OUTAGE.RESTORATION`, `OUTAGE.DURATION`, `DEMAND.LOSS.MW`, `CLIMATE.CATEGORY`, and `CAUSE.CATEGORY`, each offering insights into the nature and impact of power outages.
 
 Through the study, we hope to answer, "How do power outages that stem from different causes affect people's lives differently?" In order to answer this question, we will investigate the correlation between different causes of power outages and see if their distributions are different. 
 
-Here is an explanation of what each column in the selected dataset `power_select` means:
+Here is a detailed explanation of each column in the dataset:
 
 - The `U.S._STATE` column represents all the states in the continental U.S.
 
@@ -32,7 +32,7 @@ Here is an explanation of what each column in the selected dataset `power_select
 ## Cleaning and EDA
 ### Data Cleaning
 
-There are 55 columns in the original dataset. In order to increase the readability and accuracy of our data, we followed the following steps to clean our DataFrame:
+Our initial dataset comprised 55 columns. To enhance data readability and accuracy, we performed the following cleaning steps: 
 1. Deleting instruction rows in data: When we first imported the raw dataset, we realized that the first few rows and columns at the very beginning are instructions on how to use the dataset, not data itself. As a result, we delete those rows and columns. 
 2. Cleaning `OUTAGE.START` column: Combine the column `OUTAGE.START.DATE` and `OUTAGE.START.TIME` into just one `pd.Timestamp` column called `OUTAGE.START`. 
 3. Cleaning `OUTAGE.RESTORATION` column: Uing the same technique, we also cleaned `OUTAGE.RESTORATION.DATE` and `OUTAGE.RESTORATION.TIME` into `OUTAGE.RESTORATION`. 
@@ -53,13 +53,11 @@ Here's the first few rows of the cleaned dataframe:
 
 ### Univariate Analysis
 
-First, we could take a look at the severeness indicator variables. We start by plotting a histogram of the `OUTAGE.DURATION` column.
+We began our analysis by examining the distribution of severeness indicators like `OUTAGE.DURATION` and `DEMAND.LOSS.MW`. 
 
 <p style="text-align:center"><iframe src="assets/outage_duration.html" width=800 height=600 frameBorder=0></iframe></p>
 
 The plot demonstrates that `OUTAGE.DURATION` is skewed the right. The leftmost outage categoriazation, short duration outage (<1000), is the most common. The rest of the outage duration distribution are quite average.
-
-Next, we could plot a histogram of the `DEMAND.LOSS.MW` column.
 
 <p style="text-align:center"><iframe src="assets/demand_loss.html" width=800 height=600 frameBorder=0></iframe></p>
 
