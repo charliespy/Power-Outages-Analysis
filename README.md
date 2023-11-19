@@ -7,9 +7,11 @@ TODO: bullshit about 3-4 sentences. Abstract sort of thing.
 
 ## Investigating Topic and Introduction
 
-ODO: bullshit about background Analysis
+Electricity forms the backbone of modern civilization, an invisible force that powers our homes, fuels our industries, and charges our technologies. Yet, its uninterrupted flow is not guaranteed. Across the continental United States, major power outages have flickered and waned, leaving millions in the dark and unmasking the vulnerabilities of our energy grid. This project strives to explore the severe weather-induced power outage risks and their myriad causes.
 
-### Introduction of the Dataset
+Our dataset, spanning from January 2000 to July 2016, catalogs major power outages across the United States that affected over 50,000 customers or precipitating losses exceeding 300 MW. 
+
+Through the study, we hope to answer, "How do power outages that stem from different affect people's lives last differently?" In order to answer this question, we will investigate the correlation between different causes of power outages and see if their distributions are different. 
 
 Here is an explanation of what each column in the selected dataset `power_select` means:
 
