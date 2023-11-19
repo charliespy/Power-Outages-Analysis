@@ -27,12 +27,16 @@ Here is an explanation of what each column in the selected dataset `power_select
 
 - The `CAUSE.CATEGORY` column includes the categories of all the events causing the major power outages.
 
-In these seven columns, we deem columns `CLIMATE.CATEGORY` and `CAUSE.CATEGORY` as causal indicator variables, as they characterizes the cause of the outage. We also label columns `OUTAGE.DURATION` and `ANOMALY.LEVEL` as severness indicator variables, as they reveal how severe the power outages are. 
-
-
 ## Cleaning and EDA
 ### Data Cleaning
-TODO: Explain how we cleaned and selected the columns in words
+
+There are 55 columns in the original dataset. In order to increase the readability and accuracy of our data, we followed the following steps to clean our DataFrame:
+1. Combine the column `OUTAGE.START.DATE` and `OUTAGE.START.TIME` into just one `pd.Timestamp` column called `OUTAGE.START`. 
+2. Uing the same technique, we also cleaned `OUTAGE.RESTORATION.DATE` and `OUTAGE.RESTORATION.TIME` into `OUTAGE.RESTORATION`. 
+3. We selected a few of the columns based on interest. Since we want to study the relationship between climate, cause of the outage, and how severe the outage is, we selected these columns. 
+
+
+In these seven columns, we deemed columns `CLIMATE.CATEGORY` and `CAUSE.CATEGORY` as causal indicator variables, as they characterizes the cause of the outage. We also labeled columns `OUTAGE.DURATION` and `ANOMALY.LEVEL` as severness indicator variables, as they reveal how severe the power outages are. 
 
 Here's the cleaned dataframe: 
 
@@ -43,8 +47,6 @@ Here's the cleaned dataframe:
 | Minnesota    | 2010-10-26 20:00:00 | 2010-10-28 22:00:00  |              3000 |            -1.5 | cold               | severe weather     |
 | Minnesota    | 2012-06-19 04:30:00 | 2012-06-20 23:00:00  |              2550 |            -0.1 | normal             | severe weather     |
 | Minnesota    | 2015-07-18 02:00:00 | 2015-07-19 07:00:00  |              1740 |             1.2 | warm               | severe weather     |
-
-
 
 ### Univariate Analysis
 
@@ -82,7 +84,7 @@ INTERPRETATION
 
 To see the distribution of location, we could create a heatmap using folium.
 
-<p style="text-align:center"><iframe src="assets/heatmap.html" width=800 height=600 frameBorder=0></iframe></p>
+<p style="text-align:center"><iframe src="assets/heatmap.html" width=800 height=800 frameBorder=0></iframe></p>
 
 INTERPRETATION 
 
