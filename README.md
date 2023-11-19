@@ -5,14 +5,14 @@
 TODO: bullshit about 3-4 sentences. Abstract sort of thing. 
 
 ## Investigating Topic and Introduction
-TODO: Background Analysis
+TODO: bullshit about background Analysis
 
-**Introduction of the Dataset**
-TODO: columns analysis
+### Introduction of the Dataset
+TODO: bullshit about columns analysis
 
 
 ## Cleaning and EDA
-**Data Cleaning**
+### Data Cleaning
 TODO: Explain how we cleaned and selected the columns in words
 
 Here's the cleaned dataframe: 
@@ -27,24 +27,24 @@ Here's the cleaned dataframe:
 
 
 
-**Univariate Analysis**
+### Univariate Analysis
 
 <p style="text-align:center"><iframe src="assets/outage_duration.html" width=600 height=480 frameBorder=0></iframe></p>
 
 
-<p style="text-align:center"><iframe src="assets/anomaly_level.html" width=600 height=480 frameBorder=0></iframe></p>
+<p style="text-align:center"><iframe src="assets/anomaly_level.html" width=800 height=600 frameBorder=0></iframe></p>
 
-<p style="text-align:center"><iframe src="assets/heatmap.html" width=600 height=480 frameBorder=0></iframe></p>
-
-
-**Bivariate Analysis**
-
-<p style="text-align:center"><iframe src="assets/biv_1.html" width=600 height=480 frameBorder=0></iframe></p>
-
-<p style="text-align:center"><iframe src="assets/biv_2.html" width=600 height=480 frameBorder=0></iframe></p>
+<p style="text-align:center"><iframe src="assets/heatmap.html" width=800 height=600 frameBorder=0></iframe></p>
 
 
-**Interesting Aggregates**
+### Bivariate Analysis
+
+<p style="text-align:center"><iframe src="assets/biv_1.html" width=800 height=6000 frameBorder=0></iframe></p>
+
+<p style="text-align:center"><iframe src="assets/biv_2.html" width=800 height=600 frameBorder=0></iframe></p>
+
+
+### Interesting Aggregates 
 
 We created a pivot table: 
 
