@@ -69,4 +69,32 @@ We created a pivot table:
 
 ## Hypothesis Testing 
 
+Null Hypothesis (H0): The cumulative distribution functions (CDFs) of 'ANOMALY.LEVEL' for the 'severe weather' and 'equipment failure' cause categories are identical.
+
+Alternative Hypothesis (H1): The cumulative distribution functions (CDFs) of 'ANOMALY.LEVEL' for the 'severe weather' and 'equipment failure' cause categories are not identical.
+
+We would select only the useful column, including 'ANOMALY.LEVEL' and 'CAUSE.CATEGORY'. Recognizing the abundance of difference values in 'CAUSE.CATEGORY', we decide to only perform text on 'severe weather' and 'equipment failure'.
+
+Since anomaly level is numerical data, and there exits outier in anomaly level for severe weather and equiment failure, we choose to use  Kolmogorov-Smirnov (KS) statistic as our test statistics, considering its advantage on sensitivity to difference and robustness on ouliers.
+
+We ran permutation for 10000 times and the graph shows the distribution of permuation test result. The red line marks the observed value.
+
 ![image](assets/p_val.png)
+
+```python
+P-value: 0.6543
+Observed KS Statistic: 0.08171442127738092
+```
+
+The P-value for the testing is roughly 0.65, which means that at significant level of 0.05, we fail to reject the null hypothesis. 
+
+In real-life terms, this result suggests that the reason for the outage ('severe weather' or 'equipment failure') may not be a strong predictor of the severity of the outage. Other factors or a combination of factors might contribute to the observed severity levels.
+
+The comparable damage levels caused by 'equipment failure' and 'severe weather' may be due to resilient infrastructure, proactive maintenance, and swift response protocols in the power system. Investments in technology, regional climate considerations, and adherence to regulatory standards further contribute to minimizing outage severity. Data aggregation into broad categories may conceal nuanced variations, emphasizing the importance of a detailed analysis for a comprehensive understanding of the observed similarities.
+
+
+
+
+
+
+
