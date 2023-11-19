@@ -59,23 +59,55 @@ This is the value counts of the `CAUSE.CATEGORY` column.
 | public appeal                 |               67 |
 | equipment failure             |               59 |
 
+INTERPRETATION
 
 To see the distribution of location, we could create a heatmap using folium.
 
 <p style="text-align:center"><iframe src="assets/heatmap.html" width=800 height=600 frameBorder=0></iframe></p>
 
+INTERPRETATION 
 
 
 ### Bivariate Analysis
 
+We want to start by analyzing the relationship between `OUTAGE.DURATION` and `CLIMATE.CATEGORY`. 
+
 <p style="text-align:center"><iframe src="assets/biv_1.html" width=800 height=600 frameBorder=0></iframe></p>
 
+The box plot depicts three climate categories: warm, cold, and normal, the conditions during which the power outages occurred. The yxaxis indicates the outage duration measured in minutes. 
+
+The three distributions have similar IQR and shape. However, the median and 75% quartile outage duration is the highest in cold climate. The warm category has the fewest outliers, and the normal category has the most outliers. Overall, the cold climate tends to have longer and more variable outage durations. In contrast, the warm climate tends to have shorter and more consistent durations. This confirms our prediction that power outages are more likely to be severe and impactful in cold climates, where it snows more often than in the warm climates, where there's sunshine most of the time. 
+
+From this box plot, one could hypothesize that climate conditions have an impact on both the duration and variability of power outages. It would be important to investigate whether the longer durations in warmer climates are due to the types of weather events that cause outages, the response capabilities, or other factors. Similarly, the reasons for shorter and more consistent outages in normal climates would be worth exploring.
+
+Next, we will use another box plot to analyze the influence of different `CAUSE.CATEGORY`s on the `ANOMALY.LEVEL` of the outage.
+
 <p style="text-align:center"><iframe src="assets/biv_2.html" width=800 height=600 frameBorder=0></iframe></p>
+
+The box plot shows us that the anomaly levels are numeric, continuous, and possibly standardized around zero, which may indicate a deviation from a norm or average situation. Several categories of outage causes are included, such as islanding, fuel supply emergency, public appeal, equipment failure, system operability disruption, intentional attack, and severe weather.
+
+Analyzing the plot:
+
+- Islanding: This category has a wide IQR, indicating variability in anomaly levels. 
+
+- Fuel Supply Emergency: Although this category has a narrow IQR, it has many outliers, suggesting strong variability in the dataset. 
+
+- Public Appeal: This category shows a median anomaly level below 0, with a wide IQR. There are outliers, indicating that some equipment failures result in significantly higher anomaly levels.
+
+- Equipment Failure: The IQR is narrow, with only one outlier, which suggests that events in this category are consistent in their anomaly level.
+
+- System Operability Disruption: There's a wide IQR and the median anomaly level is negative but close to zero. The spread and outliers indicate variable impacts on the anomaly level due to system operability disruptions.
+
+- Intentional Attack: This category has a narrow IQR, but the most number of outliers, which indicates that while most intentional attacks do not deviate far from the median anomaly level, a few have had significantly higher impacts.
+
+- Severe Weather: This category has a very wide IQR, showing that severe weather causes a large variation in anomaly levels. The outliers also indicate that some severe weather events lead to very high anomaly levels.
+
+In summary, the box plot suggests that different causes of power outages result in varying levels of anomalies. Severe weather seems to be the most variable and potentially the most impactful on the anomaly level, while equipment failure appear to have the least variability. This analysis helps us in understanding which types of events create more significant deviations from normal operating conditions. In the hypothesis testing section, we will be analyzing the relationship between severe weather outages and equipment failure outages, using their anomaly levels as the standard. 
 
 
 ### Interesting Aggregates 
 
-We created a pivot table: 
+We first created a pivot table
 
 |   equipment failure |   fuel supply emergency |   intentional attack |   islanding |   public appeal |   severe weather |   system operability disruption |
 |--------------------:|------------------------:|---------------------:|------------:|----------------:|-----------------:|--------------------------------:|
@@ -83,10 +115,13 @@ We created a pivot table:
 |            3201.43  |                 7658.82 |              426.818 |     142.176 |        1376.53  |          4059.33 |                         941.018 |
 |             505     |                22799.7  |              312.557 |     209.833 |         596.231 |          4416.69 |                         478.2   |
 
+INTERPRETATION
+
+Then, using the pivot table, we created a grouped bar plot. 
 
 <p style="text-align:center"><iframe src="assets/aggregates.html" width=800 height=600 frameBorder=0></iframe></p>
 
-
+INTERPRETATION
 
 
 
