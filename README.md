@@ -33,14 +33,15 @@ Here is an explanation of what each column in the selected dataset `power_select
 ### Data Cleaning
 
 There are 55 columns in the original dataset. In order to increase the readability and accuracy of our data, we followed the following steps to clean our DataFrame:
-1. Cleaning `OUTAGE.START` column: Combine the column `OUTAGE.START.DATE` and `OUTAGE.START.TIME` into just one `pd.Timestamp` column called `OUTAGE.START`. 
-2. Cleaning `OUTAGE.RESTORATION` column: Uing the same technique, we also cleaned `OUTAGE.RESTORATION.DATE` and `OUTAGE.RESTORATION.TIME` into `OUTAGE.RESTORATION`. 
-3. Column selection: We selected a few of the columns based on interest. Since we want to study the relationship between climate, cause of the outage, and how severe the outage is, we selected seven columns. 
-4. Cleaning outliers: After graphing the distribution of `OUTAGE.DURATION` and `DEMAND.LOSS.MW` in histograms, we found that each of these distributions were very skewed. To eliminate outliers that are too extreme, we used the IQR to clean the outliers from these distributions. 
+1. Deleting instruction rows in data: When we first imported the raw dataset, we realized that the first few rows and columns at the very beginning are instructions on how to use the dataset, not data itself. As a result, we delete those rows and columns. 
+2. Cleaning `OUTAGE.START` column: Combine the column `OUTAGE.START.DATE` and `OUTAGE.START.TIME` into just one `pd.Timestamp` column called `OUTAGE.START`. 
+3. Cleaning `OUTAGE.RESTORATION` column: Uing the same technique, we also cleaned `OUTAGE.RESTORATION.DATE` and `OUTAGE.RESTORATION.TIME` into `OUTAGE.RESTORATION`. 
+4. Column selection: We selected a few of the columns based on interest. Since we want to study the relationship between climate, cause of the outage, and how severe the outage is, we selected seven columns. 
+5. Cleaning outliers: After graphing the distribution of `OUTAGE.DURATION` and `DEMAND.LOSS.MW` in histograms, we found that each of these distributions were very skewed. To eliminate outliers that are too extreme, we used the IQR to clean the outliers from these distributions. 
 
 Finally, in the remaining seven columns, we deemed columns `CLIMATE.CATEGORY` and `CAUSE.CATEGORY` as causal indicator variables, as they characterizes the cause of the outage. We also labeled columns `OUTAGE.DURATION` and `DEMAND.LOSS.MW` as severness indicator variables, as they reveal how severe the power outages are. 
 
-Here's the cleaned dataframe: 
+Here's the first few rows of the cleaned dataframe: 
 
 | U.S. STATE   | OUTAGE. START       | OUTAGE. RESTORATION  |  OUTAGE. DURATION |  ANOMALY. LEVEL | CLIMATE. CATEGORY  | CAUSE. CATEGORY    |
 |:-------------|:--------------------|:---------------------|------------------:|----------------:|:-------------------|:-------------------|
@@ -103,7 +104,7 @@ The three distributions have similar IQR and shape. However, the median and 75% 
 
 From this box plot, one could hypothesize that climate conditions do not have a strong impact on both the duration and variability of power outages. Therefore, in our hypothesis tests, we will likely not adopt `CLIMATE.CATEGORY` as a feature variable. 
 
-Next, we will use another box plot to analyze the influence of different `CAUSE.CATEGORY`s on the `ANOMALY.LEVEL` of the outage.
+Next, we will use another box plot to analyze the influence of different `CAUSE.CATEGORY`s on the `DEMAND.LOSS.MW` of the outage.
 
 <p style="text-align:center"><iframe src="assets/biv_2.html" width=800 height=600 frameBorder=0></iframe></p>
 
@@ -145,7 +146,7 @@ We think that the dataset is NMAR. In the analysis of the dataset derived from '
 
 Now, we focus on the missingness of demand loss in the power dataframe and test the dependency of this missingnes We are conducting dependency test on two paris of columns: {`CAUSE.CATEGORY`, `DEMAND.LOSS.MW`}, and {`CLIMATE.CATEGORY`, `DEMAND.LOSS.MW`}.
 
-**`CAUSE.CATEGORY` & `DEMAND.LOSS.MW`:**
+1. **`CAUSE.CATEGORY` & `DEMAND.LOSS.MW`:**
 
 Null Hypothesis (H0): the distribution of the cause when demand loss is missing is the same as the distribution of the cause when demand loss is not missing. 
 
@@ -155,9 +156,9 @@ Test statistic: We are using TVD (Total Variation Distance) as our test statisti
 
 <p style="text-align:center"><iframe src="assets/missingness_1.html" width=800 height=600 frameBorder=0></iframe></p>
 
-We get a p-value of approximately 0.0, when we use 0.05 as our significance threshold, we should reject the null hypothesis that the distribution of the cause when demand loss is missing is the same as the distribution of the cause when demand loss is not missing. In another word, demand loss is not dependent on the cause.
+We get a p-value of 0.0, when we use 0.05 as our significance threshold, we should reject the null hypothesis that the distribution of the cause when demand loss is missing is the same as the distribution of the cause when demand loss is not missing. In another word, demand loss is not dependent on the cause.
 
-**`CLIMATE.CATEGORY` & `DEMAND.LOSS.MW`:**
+1. **`CLIMATE.CATEGORY` & `DEMAND.LOSS.MW`:**
 
 Null Hypothesis (H0): the distribution of the climate when demand loss is missing is the same as the distribution of the climate when demand loss is not missing 
 
