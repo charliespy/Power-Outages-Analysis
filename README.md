@@ -118,7 +118,7 @@ In summary, the box plot suggests that different causes of power outages result 
 
 ### Interesting Aggregates 
 
-We first created a pivot table
+We first created a pivot table. 
 
 |   equipment failure |   fuel supply emergency |   intentional attack |   islanding |   public appeal |   severe weather |   system operability disruption |
 |--------------------:|------------------------:|---------------------:|------------:|----------------:|-----------------:|--------------------------------:|
@@ -126,15 +126,13 @@ We first created a pivot table
 |              445.76 |                 1583.2  |              333.366 |     72.6875 |        1385.58  |          1820.49 |                         276.583 |
 |              505    |                  255    |              312.557 |    209.833  |         625.333 |          1777.95 |                         495.571 |
 
-INTERPRETATION
+The mean of outage duration in each column varies indicating that the there may exits an correlation between `OUTAGE.DURATION` and {`CAUSE.CATEGROY` and `CLIMATE.CATEGORY`}. 
 
 Then, using the pivot table, we created a grouped bar plot. 
 
 <p style="text-align:center"><iframe src="assets/aggregates.html" width=800 height=600 frameBorder=0></iframe></p>
 
-INTERPRETATION
-
-
+With the Bar Plot computed from the pivot table above, the difference in mean can be more easily observed, especally between warm category and the other two climate category.
 
 ## Assessment of Missingness
 
