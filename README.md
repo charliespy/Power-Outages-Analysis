@@ -87,7 +87,7 @@ INTERPRETATION
 
 To see the distribution of location, we could create a heatmap using folium.
 
-<p style="text-align:center"><iframe src="assets/heatmap.html" width=800 frameBorder=0></iframe></p>
+<p style="text-align:center"><iframe src="assets/heatmap.html" width=800 height = 400 frameBorder=0></iframe></p>
 
 INTERPRETATION 
 
