@@ -167,9 +167,9 @@ Observed KS Statistic: 0.4099314384610264
 
 The P-value for the testing is roughly 0.65, which means that at significant level of 0.05, we fail to reject the null hypothesis. 
 
-In real-life terms, this result suggests that the reason for the outage ('severe weather' or 'equipment failure') may not be a strong predictor of the severity of the outage. Other factors or a combination of factors might contribute to the observed severity levels.
+In real-life terms, this result suggests that the reason for the outage ('severe weather' or 'intentional attack') may not be a strong predictor of the severity of the outage. Other factors or a combination of factors might contribute to the observed severity levels.
 
-The comparable damage levels caused by 'equipment failure' and 'severe weather' may be due to resilient infrastructure, proactive maintenance, and swift response protocols in the power system. Investments in technology, regional climate considerations, and adherence to regulatory standards further contribute to minimizing outage severity. Data aggregation into broad categories may conceal nuanced variations, emphasizing the importance of a detailed analysis for a comprehensive understanding of the observed similarities.
+The comparable damage levels caused by 'intentional attack' and 'severe weather' may be due to resilient infrastructure, proactive maintenance, and swift response protocols in the power system. Investments in technology, regional climate considerations, and adherence to regulatory standards further contribute to minimizing outage severity. Data aggregation into broad categories may conceal nuanced variations, emphasizing the importance of a detailed analysis for a comprehensive understanding of the observed similarities.
 
 We then repeated the same procedures, but changed the severeness indicator variables to `OUTAGE.DURATION`. Similar to `DEMAND.LOSS.MW`, we also rejected the null hypothesis. The summarized statistics are given below:
 
@@ -179,4 +179,4 @@ Observed KS Statistic: 0.5707781401850496
 ```
 <p style="text-align:center"><iframe src="assets/hypothesis_2.html" width=800 height=600 frameBorder=0></iframe></p>
 
-Since in both hypothesis tests, we rejected the null hypothesis, we could conclude, with enough statistical confidence, that the cumulative distribution functions (CDFs) of `DEMAND.LOSS.MW` for the 'severe weather' and 'equipment failure' cause categories are not identical.
+Since in both hypothesis tests, we rejected the null hypothesis, we could conclude, with enough statistical confidence, that the cumulative distribution functions (CDFs) of `DEMAND.LOSS.MW` for the 'severe weather' and 'intentional attack' cause categories are not identical.
