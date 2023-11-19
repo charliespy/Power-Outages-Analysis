@@ -29,7 +29,7 @@ Here's the cleaned dataframe:
 
 ### Univariate Analysis
 
-<iframe src="assets/outage_duration.html" width=800 height=600 frameBorder=0></iframe>
+<iframe src="assets/outage_duration.html" width=500 height=300 frameBorder=0></iframe>
 
 ### Bivariate Analysis
 
